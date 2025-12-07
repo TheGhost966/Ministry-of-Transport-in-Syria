@@ -705,14 +705,14 @@ See [LICENSE](LICENSE) file for complete license details.
 **Hamza Al Halabi**
 - 🎓 Student at Kocaeli University
 - 🌐 Portfolio: [Your Portfolio URL]
-- 💼 LinkedIn: [Your LinkedIn]
-- 📧 Email: [Your Email]
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+- 💼 LinkedIn: (https://www.linkedin.com/in/hamza-al-halabi-115391341/)
+- 📧 Email: hamzaalhalabi99@gmail.com
+- 🐙 GitHub: (https://github.com/TheGhost966)
 
 ### Project Links
 
-- 🌐 **Live Site**: [https://your-site.netlify.app](https://your-site.netlify.app)
-- 📦 **Repository**: [https://github.com/yourusername/syria-transport-website](https://github.com/yourusername/syria-transport-website)
+- 🌐 **Live Site**: (https://exquisite-belekoy-b51374.netlify.app/)
+- 📦 **Repository**: (https://github.com/TheGhost966/Ministry-of-Transport-in-Syria)
 - 📊 **Project Report**: [View PDF](docs/report.pdf)
 
 ---
