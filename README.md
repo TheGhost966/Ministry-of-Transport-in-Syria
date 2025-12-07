@@ -497,19 +497,19 @@ graph TB
 ## 📸 Screenshots
 
 ### Desktop View
-![Desktop Homepage](assets/images/screenshots/desktop-home.png)
+![Desktop Homepage](assets/images/screenshots/desktop-home.jpeg)
 *Modern, clean interface optimized for desktop viewing*
 
 ### Mobile View
-![Mobile View](assets/images/screenshots/mobile-view.png)
+![Mobile View](assets/images/screenshots/mobile-view.jpeg)
 *Fully responsive design for mobile devices*
 
 ### Arabic Version
-![Arabic RTL](assets/images/screenshots/arabic-rtl.png)
+![Arabic RTL](assets/images/screenshots/arabic-rtl.jpeg)
 *Complete RTL support for Arabic language*
 
 ### Statistics Page
-![Statistics](assets/images/screenshots/statistics.png)
+![Statistics](assets/images/screenshots/statistics.jpeg)
 *Interactive charts and data visualization*
 
 ---
