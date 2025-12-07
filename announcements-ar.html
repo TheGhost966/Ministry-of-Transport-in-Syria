@@ -1,0 +1,664 @@
+<!DOCTYPE HTML>
+<html dir="rtl" lang="ar">
+<head>
+	<link rel="icon" type="image/png" href="images/favicon_32x32.png">
+	<title>الإعلانات - وزارة النقل</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/custom.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+	<style>
+		/* Announcements Page Specific Styles */
+		.subtitle {
+			font-size: 1.2rem;
+			color: #6b7280;
+			margin-bottom: 2rem;
+		}
+
+		/* Announcement Grid */
+		.announcements-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		/* Announcement Card */
+		.announcement-card {
+			background: white;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			cursor: pointer;
+			border-top: 4px solid #1e3a8a;
+		}
+
+		.announcement-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+		}
+
+		.announcement-image {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.announcement-content {
+			padding: 1.5rem;
+		}
+
+		.announcement-content h3 {
+			color: #1e3a8a;
+			margin-bottom: 0.75rem;
+			font-size: 1.2rem;
+			line-height: 1.3;
+		}
+
+		.announcement-excerpt {
+			color: #4b5563;
+			line-height: 1.6;
+			margin-bottom: 1rem;
+			font-size: 0.95rem;
+		}
+
+		.announcement-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-top: 1rem;
+			border-top: 1px solid #e5e7eb;
+			font-size: 0.85rem;
+			color: #6b7280;
+		}
+
+		.announcement-date {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.announcement-category {
+			background: #e0f2fe;
+			color: #0369a1;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+
+		/* Category color variations */
+		.category-services { background: #dbeafe; color: #1e40af; }
+		.category-regulations { background: #fef3c7; color: #92400e; }
+		.category-aviation { background: #e0e7ff; color: #3730a3; }
+		.category-maritime { background: #cffafe; color: #155e75; }
+		.category-safety { background: #fee2e2; color: #991b1b; }
+		.category-infrastructure { background: #f3e8ff; color: #6b21a8; }
+		.category-events { background: #dcfce7; color: #166534; }
+		.category-news { background: #e0f2fe; color: #0369a1; }
+
+		/* Pagination */
+		.pagination {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			margin-top: 3rem;
+			list-style: none;
+			padding: 0;
+		}
+
+		.pagination a {
+			padding: 0.5rem 1rem;
+			border: 1px solid #d1d5db;
+			border-radius: 5px;
+			color: #1e3a8a;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		.pagination a:hover,
+		.pagination a.active {
+			background: #1e3a8a;
+			color: white;
+			border-color: #1e3a8a;
+		}
+
+		.pagination .extra {
+			color: #6b7280;
+		}
+
+		/* Modal Enhancement */
+		.modal-meta {
+			color: #6b7280;
+			margin-bottom: 1.5rem;
+			font-size: 0.9rem;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.announcements-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.announcement-meta {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.5rem;
+			}
+		}
+	</style>
+</head>
+<body class="is-preload">
+	   <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="announcements.html">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="شعار الوزارة">
+                <h1>وزارة النقل</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index-ar.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="about-ar.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments-ar.html">
+                        <i class="fas fa-building"></i> الإدارات
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments-ar.html#road"><i class="fas fa-road"></i> النقل البري</a>
+                        <a href="departments-ar.html#rail"><i class="fas fa-train"></i> النقل بالسكك الحديدية</a>
+                        <a href="departments-ar.html#maritime"><i class="fas fa-ship"></i> النقل البحري</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services-ar.html">
+                        <i class="fas fa-cogs"></i> الخدمات
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services-ar.html#licenses"><i class="fas fa-id-card"></i> رخص القيادة</a>
+                        <a href="services-ar.html#registration"><i class="fas fa-car"></i> تسجيل المركبات</a>
+                        <a href="services-ar.html#permits"><i class="fas fa-file-alt"></i> تصاريح النقل</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics-ar.html"><i class="fas fa-chart-bar"></i> الإحصائيات</a></li>
+                <li><a href="contact-ar.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="تسجيل دخول المسؤول">
+                         <i class="fas fa-user-shield"></i> المسؤول
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> English
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index-ar.html" class="logo">
+						<span class="symbol"><img src="images/logo.png" alt="شعار الوزارة" style="width: 20px; height: 20px;" /></span>
+						<strong>وزارة النقل</strong>
+					</a>
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">فيسبوك</span></a></li>
+						<li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">تويتر</span></a></li>
+						<li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">يوتيوب</span></a></li>
+					</ul>
+				</header>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>أحدث الإعلانات</h1>
+						<p class="subtitle">ابق على اطلاع بأحدث الأخبار والتحديثات والتوجيهات من وزارة النقل.</p>
+					</header>
+
+					<!-- Announcements Grid -->
+					<div class="announcements-grid">
+						
+						<!-- Announcement 1 -->
+						<div class="announcement-card" onclick="openModal('modal1')">
+							<img src="images/pic01.jpg" alt="مشروع الطريق السريع" class="announcement-image">
+							<div class="announcement-content">
+								<h3>إطلاق مشروع طريق سريع جديد</h3>
+								<p class="announcement-excerpt">أطلقت وزارة النقل رسمياً مشروع طريق سريع رئيسي جديد يهدف إلى ربط المدن الرئيسية وتحسين البنية التحتية الوطنية...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										1 أكتوبر 2025
+									</span>
+									<span class="announcement-category category-news">أخبار عامة</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 2 -->
+						<div class="announcement-card" onclick="openModal('modal2')">
+							<img src="images/pic02.jpg" alt="النقل العام" class="announcement-image">
+							<div class="announcement-content">
+								<h3>مبادرة توسيع النقل العام</h3>
+								<p class="announcement-excerpt">تم الإعلان عن مبادرة طموحة لتوسيع شبكات النقل العام في المراكز الحضرية الرئيسية. تشمل المبادرة خطوط حافلات جديدة وزيادة التردد...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										28 سبتمبر 2025
+									</span>
+									<span class="announcement-category category-services">خدمات</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 3 -->
+						<div class="announcement-card" onclick="openModal('modal3')">
+							<img src="images/pic03.jpg" alt="المركبات التجارية" class="announcement-image">
+							<div class="announcement-content">
+								<h3>لوائح جديدة للمركبات التجارية</h3>
+								<p class="announcement-excerpt">أصدرت الوزارة لوائح جديدة للمركبات التجارية لتعزيز السلامة على الطرق وضمان الامتثال للمعايير الدولية...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										20 سبتمبر 2025
+									</span>
+									<span class="announcement-category category-regulations">لوائح</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 4 -->
+						<div class="announcement-card" onclick="openModal('modal4')">
+							<img src="images/pic04.jpg" alt="سلامة الطيران" class="announcement-image">
+							<div class="announcement-content">
+								<h3>اعتماد معايير السلامة الدولية للطيران</h3>
+								<p class="announcement-excerpt">يعمل قطاع الطيران السوري على مواءمة أحدث معايير السلامة الدولية كجزء من الالتزام المستمر بضمان السفر الجوي الآمن...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										15 سبتمبر 2025
+									</span>
+									<span class="announcement-category category-aviation">الطيران</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 5 -->
+						<div class="announcement-card" onclick="openModal('modal5')">
+							<img src="images/pic05.jpg" alt="تحديث الموانئ" class="announcement-image">
+							<div class="announcement-content">
+								<h3>مشروع تحديث الموانئ قيد التنفيذ</h3>
+								<p class="announcement-excerpt">جهود تحديث كبيرة جارية في الموانئ السورية الرئيسية لتحسين كفاءة مناولة البضائع وزيادة السعة وتعزيز اللوجستيات التجارية...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										10 سبتمبر 2025
+									</span>
+									<span class="announcement-category category-maritime">بحري</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 6 -->
+						<div class="announcement-card" onclick="openModal('modal6')">
+							<img src="images/pic06.jpg" alt="رخصة القيادة" class="announcement-image">
+							<div class="announcement-content">
+								<h3>تطبيق نظام رخص القيادة الجديد</h3>
+								<p class="announcement-excerpt">تم تطبيق نظام رقمي جديد لإصدار وتجديد رخص القيادة لتبسيط الإجراءات وتقليل أوقات الانتظار...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										5 سبتمبر 2025
+									</span>
+									<span class="announcement-category category-services">خدمات</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 7 -->
+						<div class="announcement-card" onclick="openModal('modal7')">
+							<img src="images/pic07.jpg" alt="السلامة على الطرق" class="announcement-image">
+							<div class="announcement-content">
+								<h3>إطلاق حملة توعية بالسلامة على الطرق</h3>
+								<p class="announcement-excerpt">تم إطلاق حملة توعية وطنية بالسلامة على الطرق لتثقيف السائقين والمشاة حول الممارسات الآمنة بهدف تقليل حوادث المرور...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										28 أغسطس 2025
+									</span>
+									<span class="announcement-category category-safety">السلامة</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 8 -->
+						<div class="announcement-card" onclick="openModal('modal8')">
+							<img src="images/pic08.jpg" alt="مركز اللوجستيات" class="announcement-image">
+							<div class="announcement-content">
+								<h3>افتتاح مركز لوجستي جديد</h3>
+								<p class="announcement-excerpt">تم افتتاح مركز لوجستي حديث لتعزيز نقل البضائع وكفاءة سلسلة التوريد في جميع أنحاء المنطقة...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										20 أغسطس 2025
+									</span>
+									<span class="announcement-category category-infrastructure">بنية تحتية</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 9 -->
+						<div class="announcement-card" onclick="openModal('modal9')">
+							<img src="images/pic09.jpg" alt="النقل الأخضر" class="announcement-image">
+							<div class="announcement-content">
+								<h3>دعوة لتقديم المقترحات: مبادرات النقل الأخضر</h3>
+								<p class="announcement-excerpt">تدعو الوزارة إلى تقديم مقترحات لمبادرات النقل الأخضر المبتكرة لتعزيز الممارسات المستدامة وتقليل انبعاثات الكربون...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										10 أغسطس 2025
+									</span>
+									<span class="announcement-category category-events">فعاليات</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Pagination -->
+					<ul class="pagination">
+						<li><a href="#" class="active">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><span class="extra">&hellip;</span></li>
+						<li><a href="#">8</a></li>
+						<li><a href="#">التالي</a></li>
+					</ul>
+
+				</section>
+
+			</div>
+
+			<!-- Main Footer -->
+			<footer id="main-footer">
+				<div class="inner">
+					<div class="footer-columns">
+						<!-- Column 1: About -->
+						<div class="footer-column">
+							<h3>وزارة النقل</h3>
+							<p>الجمهورية العربية السورية</p>
+							<p>بناء مستقبل النقل من خلال الابتكار والسلامة والاستدامة. نحن ملتزمون بخدمة جميع المواطنين بحلول نقل فعالة وحديثة.</p>
+						</div>
+
+						<!-- Column 2: Quick Links -->
+						<div class="footer-column">
+							<h3>روابط سريعة</h3>
+							<ul>
+								<li><a href="index-ar.html">الرئيسية</a></li>
+								<li><a href="about-ar.html">من نحن</a></li>
+								<li><a href="mission-ar.html">المهمة والرؤية</a></li>
+								<li><a href="services-ar.html">خدماتنا</a></li>
+								<li><a href="departments-ar.html">الإدارات</a></li>
+								<li><a href="statistics-ar.html">الإحصائيات</a></li>
+							</ul>
+						</div>
+
+						<!-- Column 3: Services -->
+						<div class="footer-column">
+							<h3>خدماتنا</h3>
+							<ul>
+								<li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+								<li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+								<li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+								<li><a href="services-ar.html">برامج السلامة على الطرق</a></li>
+								<li><a href="services-ar.html">فحص المركبات</a></li>
+								<li><a href="services-ar.html">النقل العام</a></li>
+							</ul>
+						</div>
+
+						<!-- Column 4: Contact -->
+						<div class="footer-column">
+							<h3>معلومات الاتصال</h3>
+							<ul>
+								<li><i class="fas fa-map-marker-alt"></i> دمشق، سوريا</li>
+								<li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+								<li><i class="fas fa-fax"></i> +963 11 332 3317</li>
+								<li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+							</ul>
+							<h3>تابعنا</h3>
+							<div class="social-icons">
+								<a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="فيسبوك">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a href="https://x.com/SyrSMOT" target="_blank" title="تويتر">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a href="https://www.youtube.com/@mot-gov" target="_blank" title="يوتيوب">
+									<i class="fab fa-youtube"></i>
+								</a>
+								<a href="#" title="لينكد إن">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Footer Bottom -->
+					<div class="footer-bottom">
+						<p>&copy; 2025 وزارة النقل السورية. جميع الحقوق محفوظة. | تصميم الموقع من قبل حمزة الحلبي لدورة تصميم المواقع الإلكترونية في جامعة كوجالي</p>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+		<!-- End of #main -->
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Search -->
+				<section id="search" class="alt">
+					<form method="post" action="#">
+						<input type="text" name="query" id="query" placeholder="بحث" />
+					</form>
+				</section>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>القائمة</h2>
+					</header>
+					<ul>
+						<li><a href="index-ar.html">الرئيسية</a></li>
+						<li><a href="about-ar.html">من نحن</a></li>
+						<li><a href="mission-ar.html">المهمة والرؤية</a></li>
+						<li>
+							<span class="opener">الإدارات</span>
+							<ul>
+								<li><a href="departments-ar.html#road">النقل البري</a></li>
+								<li><a href="departments-ar.html#rail">النقل بالسكك الحديدية</a></li>
+								<li><a href="departments-ar.html#maritime">النقل البحري</a></li>
+							</ul>
+						</li>
+						<li>
+							<span class="opener">الخدمات</span>
+							<ul>
+								<li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+								<li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+								<li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+							</ul>
+						</li>
+						<li><a href="statistics-ar.html">الإحصائيات</a></li>
+						<li><a href="contact-ar.html">اتصل بنا</a></li>
+					</ul>
+				</nav>
+
+				<!-- Contact Info -->
+				<section>
+					<header class="major">
+						<h2>تواصل معنا</h2>
+					</header>
+					<p>نرحب بأسئلتكم واقتراحاتكم وملاحظاتكم.</p>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+						<li class="icon solid fa-phone">+963 11 333 6801</li>
+						<li class="icon solid fa-home">دمشق، سوريا</li>
+					</ul>
+				</section>
+
+				<!-- Sidebar Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; 2025 وزارة النقل السورية. جميع الحقوق محفوظة.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- End of wrapper -->
+
+	<!-- Modal Elements (9 modals for 9 announcements) -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal1')">&times;</span>
+			<h2>إطلاق مشروع طريق سريع جديد</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 1 أكتوبر 2025 | <strong>أخبار عامة</strong></p>
+			<p>أطلقت وزارة النقل رسمياً مشروع طريق سريع رئيسي جديد يهدف إلى ربط المدن الرئيسية وتحسين البنية التحتية الوطنية. من المتوقع أن يعزز هذا المشروع النشاط الاقتصادي بشكل كبير ويسهل السفر عبر البلاد.</p>
+			<p>سيمتد الطريق السريع على مسافة تزيد عن 300 كيلومتر، ويربط دمشق بالمراكز الاقتصادية الرئيسية. من المتوقع أن يكتمل البناء خلال 3 سنوات، مما يخلق آلاف فرص العمل ويحسن كفاءة اللوجستيات في جميع أنحاء المنطقة.</p>
+			<p><strong>الميزات الرئيسية:</strong> تصميم بأربعة مسارات، أنظمة رسوم حديثة، مناطق استراحة كل 50 كم، والتكامل مع شبكات الطرق الحالية.</p>
+		</div>
+	</div>
+
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal2')">&times;</span>
+			<h2>مبادرة توسيع النقل العام</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 28 سبتمبر 2025 | <strong>خدمات</strong></p>
+			<p>تم الإعلان عن مبادرة طموحة لتوسيع شبكات النقل العام في المراكز الحضرية الرئيسية. تشمل المبادرة خطوط حافلات جديدة وزيادة التردد وتحديث الأساطيل الحالية لتقديم خدمة أفضل للركاب.</p>
+			<p>سيضيف التوسع 50 حافلة جديدة إلى الأسطول، وتقديم 15 خطاً جديداً، وتنفيذ نظام تذاكر رقمي. تهدف المبادرة إلى الحد من ازدحام المرور وتوفير خيارات نقل ميسورة التكلفة لجميع المواطنين.</p>
+		</div>
+	</div>
+
+	<div id="modal3" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal3')">&times;</span>
+			<h2>لوائح جديدة للمركبات التجارية</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 20 سبتمبر 2025 | <strong>لوائح</strong></p>
+			<p>أصدرت الوزارة لوائح جديدة للمركبات التجارية لتعزيز السلامة على الطرق وضمان الامتثال للمعايير الدولية. تغطي هذه اللوائح صيانة المركبات وتدريب السائقين وأمن البضائع.</p>
+			<p>يجب على جميع مشغلي المركبات التجارية الامتثال للمعايير الجديدة بحلول يناير 2026. تشمل اللوائح عمليات التفتيش الإلزامية على السلامة كل 6 أشهر، وبرامج اعتماد السائقين، ومتطلبات محدثة لتأمين البضائع.</p>
+		</div>
+	</div>
+
+	<div id="modal4" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal4')">&times;</span>
+			<h2>اعتماد معايير السلامة الدولية للطيران</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 15 سبتمبر 2025 | <strong>الطيران</strong></p>
+			<p>يعمل قطاع الطيران السوري على مواءمة أحدث معايير السلامة الدولية كجزء من الالتزام المستمر بضمان السفر الجوي الآمن والفعال. ستعزز هذه الخطوة الاتصال العالمي وثقة الركاب.</p>
+			<p>يوضح اعتماد معايير الإيكاو التزام سوريا بسلامة الطيران وسيسهل التكامل بشكل أفضل مع أنظمة حركة الطيران الدولية.</p>
+		</div>
+	</div>
+
+	<div id="modal5" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal5')">&times;</span>
+			<h2>مشروع تحديث الموانئ قيد التنفيذ</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 10 سبتمبر 2025 | <strong>بحري</strong></p>
+			<p>جهود تحديث كبيرة جارية في الموانئ السورية الرئيسية لتحسين كفاءة مناولة البضائع وزيادة السعة وتعزيز اللوجستيات التجارية. هذا المشروع حيوي للتجارة الإقليمية والدولية.</p>
+			<p>يشمل التحديث معدات جديدة لمناولة الحاويات ومرافق تخزين موسعة وأنظمة إدارة موانئ رقمية. سيزيد المشروع من سعة الميناء بنسبة 40٪ ويقلل من وقت تحول السفن بنسبة 30٪.</p>
+		</div>
+	</div>
+
+	<div id="modal6" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal6')">&times;</span>
+			<h2>تطبيق نظام رخص القيادة الجديد</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 5 سبتمبر 2025 | <strong>خدمات</strong></p>
+			<p>تم تطبيق نظام رقمي جديد لإصدار وتجديد رخص القيادة لتبسيط الإجراءات وتقليل أوقات الانتظار. يمكن للمواطنين الآن التقديم وتتبع طلباتهم عبر الإنترنت.</p>
+			<p>يشمل النظام الرقمي حجز المواعيد عبر الإنترنت وإمكانيات تحميل المستندات وتتبع الطلبات في الوقت الفعلي. تم تقليص أوقات المعالجة من أسبوعين إلى 3-5 أيام عمل.</p>
+		</div>
+	</div>
+
+	<div id="modal7" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal7')">&times;</span>
+			<h2>إطلاق حملة توعية بالسلامة على الطرق</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 28 أغسطس 2025 | <strong>السلامة</strong></p>
+			<p>تم إطلاق حملة توعية وطنية بالسلامة على الطرق لتثقيف السائقين والمشاة حول الممارسات الآمنة، بهدف تقليل حوادث المرور وتعزيز الاستخدام المسؤول للطرق.</p>
+			<p>تشمل الحملة إعلانات تلفزيونية وبرامج مدرسية وورش عمل مجتمعية. تظهر الإحصائيات أن التعليم المناسب للسلامة على الطرق يمكن أن يقلل من الحوادث بنسبة تصل إلى 25٪.</p>
+		</div>
+	</div>
+
+	<div id="modal8" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal8')">&times;</span>
+			<h2>افتتاح مركز لوجستي جديد</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 20 أغسطس 2025 | <strong>بنية تحتية</strong></p>
+			<p>تم افتتاح مركز لوجستي حديث لتعزيز نقل البضائع وكفاءة سلسلة التوريد في جميع أنحاء المنطقة. ستعمل هذه المنشأة كنقطة مركزية للتوزيع والتخزين.</p>
+			<p>تشمل المنشأة التي تبلغ مساحتها 50,000 متر مربع تخزيناً يتحكم في درجة الحرارة ورصيف تحميل حديث ووصولاً مباشراً للطريق السريع. سيتعامل مع ما يصل إلى 1000 شاحنة يومياً وسيخلق 500 وظيفة جديدة.</p>
+		</div>
+	</div>
+
+	<div id="modal9" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal9')">&times;</span>
+			<h2>دعوة لتقديم المقترحات: مبادرات النقل الأخضر</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> 10 أغسطس 2025 | <strong>فعاليات</strong></p>
+			<p>تدعو الوزارة إلى تقديم مقترحات لمبادرات النقل الأخضر المبتكرة لتعزيز الممارسات المستدامة وتقليل انبعاثات الكربون في قطاع النقل. فرص التمويل متاحة.</p>
+			<p>يتم قبول المقترحات للمشاريع التي تتضمن المركبات الكهربائية والوقود البديل وتحسينات النقل العام والبنية التحتية للدراجات. تتراوح منح التمويل من 50,000 دولار إلى 500,000 دولار. الموعد النهائي لتقديم الطلبات هو 30 نوفمبر 2025.</p>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/custom.js"></script>
+<button class="scroll-to-top" id="scrollToTop" title="العودة للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>
