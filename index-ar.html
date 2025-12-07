@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html dir="rtl" lang="ar">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon_32x32.png">
+    <title>وزارة النقل - الجمهورية العربية السورية</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="is-preload">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="index.html">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="شعار الوزارة">
+                <h1>وزارة النقل</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index-ar.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="about-ar.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments-ar.html">
+                        <i class="fas fa-building"></i> الإدارات
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments-ar.html#road"><i class="fas fa-road"></i> النقل البري</a>
+                        <a href="departments-ar.html#rail"><i class="fas fa-train"></i> النقل بالسكك الحديدية</a>
+                        <a href="departments-ar.html#maritime"><i class="fas fa-ship"></i> النقل البحري</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services-ar.html">
+                        <i class="fas fa-cogs"></i> الخدمات
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services-ar.html#licenses"><i class="fas fa-id-card"></i> رخص القيادة</a>
+                        <a href="services-ar.html#registration"><i class="fas fa-car"></i> تسجيل المركبات</a>
+                        <a href="services-ar.html#permits"><i class="fas fa-file-alt"></i> تصاريح النقل</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics-ar.html"><i class="fas fa-chart-bar"></i> الإحصائيات</a></li>
+                <li><a href="contact-ar.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="دخول المشرف">
+                         <i class="fas fa-user-shield"></i> المشرف
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> English
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <!-- Header -->
+                <header id="header">
+                    <a href="index-ar.html" class="logo">
+                        <span class="symbol"><img src="images/logo.png" alt="شعار الوزارة" style="width: 50px; height: 50px;" /></span>
+                        <strong><b>وزارة النقل</b></strong>
+                    </a>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">فيسبوك</span></a></li>
+                        <li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">تويتر</span></a></li>
+                        <li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">يوتيوب</span></a></li>
+                    </ul>
+                </header>
+
+                   
+    
+
+                <!-- Slider Section -->
+                <section id="hero-slider">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                                <img src="images/slider/slide1.jpg" alt="النقل الحديث">
+                                <div class="slide-content">
+                                    <h2>بناء البنية التحتية الحديثة</h2>
+                                    <p>ربط سوريا من خلال شبكات نقل متطورة</p>
+                                    <a href="services-ar.html" class="button primary">معرفة المزيد</a>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                                <img src="images/slider/slide2.jpg" alt="النقل العام">
+                                <div class="slide-content">
+                                    <h2>نقل عام فعال</h2>
+                                    <p>خدمة ملايين الركاب سنوياً</p>
+                                    <a href="statistics-ar.html" class="button primary">عرض الإحصائيات</a>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                                <img src="images/slider/slide3.jpg" alt="السلامة أولاً">
+                                <div class="slide-content">
+                                    <h2>السلامة أولاً</h2>
+                                    <p>تطبيق أعلى معايير السلامة</p>
+                                    <a href="about-ar.html" class="button primary">من نحن</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navigation -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <!-- Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+
+                <!-- Announcements Section -->
+                <section id="announcements">
+                    <header class="major">
+                        <h2>آخر الإعلانات</h2>
+                        <p>ابق على اطلاع بآخر الأخبار والتطورات</p>
+                    </header>
+                    <div class="posts">
+                        <!-- Announcement 1 -->
+                        <article>
+                            <a href="#" class="image"><img src="images/announcements/announce1.jpg" alt="الإعلان 1" /></a>
+                            <h3>إطلاق مشروع طريق سريع جديد</h3>
+                            <p class="date"><i class="far fa-calendar"></i> 1 أكتوبر 2025</p>
+                            <p>تعلن الوزارة عن إطلاق طريق سريع جديد يربط المدن الرئيسية...</p>
+                            <ul class="actions">
+                                <li><a href="#" class="button" onclick="openModal('modal1'); return false;">اقرأ المزيد</a></li>
+                            </ul>
+                        </article>
+                        <!-- Announcement 2 -->
+                        <article>
+                            <a href="#" class="image"><img src="images/announcements/announce2.jpg" alt="الإعلان 2" /></a>
+                            <h3>توسيع النقل العام</h3>
+                            <p class="date"><i class="far fa-calendar"></i> 28 سبتمبر 2025</p>
+                            <p>إضافة خطوط حافلات جديدة لخدمة المزيد من الأحياء في جميع أنحاء البلاد...</p>
+                            <ul class="actions">
+                                <li><a href="#" class="button" onclick="openModal('modal2'); return false;">اقرأ المزيد</a></li>
+                            </ul>
+                        </article>
+                        <!-- Announcement 3 -->
+                        <article>
+                            <a href="#" class="image"><img src="images/announcements/announce3.jpg" alt="الإعلان 3" /></a>
+                            <h3>برنامج تحديث السكك الحديدية</h3>
+                            <p class="date"><i class="far fa-calendar"></i> 25 سبتمبر 2025</p>
+                            <p>الاستثمار في البنية التحتية للسكك الحديدية لتحسين تجربة الركاب...</p>
+                            <ul class="actions">
+                                <li><a href="#" class="button" onclick="openModal('modal3'); return false;">اقرأ المزيد</a></li>
+                            </ul>
+                        </article>
+                        <!-- Announcement 4 -->
+                        <article>
+                            <a href="#" class="image"><img src="images/announcements/announce4.jpg" alt="الإعلان 4" /></a>
+                            <h3>إطلاق حملة السلامة</h3>
+                            <p class="date"><i class="far fa-calendar"></i> 20 سبتمبر 2025</p>
+                            <p>حملة توعية جديدة للسلامة على الطرق تستهدف جميع مستخدمي الطرق...</p>
+                            <ul class="actions">
+                                <li><a href="#" class="button" onclick="openModal('modal4'); return false;">اقرأ المزيد</a></li>
+                            </ul>
+                        </article>
+                        <!-- Announcement 5 -->
+                        <article>
+                            <a href="#" class="image"><img src="images/announcements/announce5.jpg" alt="الإعلان 5" /></a>
+                            <h3>بوابة الخدمات الرقمية</h3>
+                            <p class="date"><i class="far fa-calendar"></i> 15 سبتمبر 2025</p>
+                            <p>إطلاق بوابة إلكترونية جديدة للخدمات المتعلقة بالنقل...</p>
+                            <ul class="actions">
+                                <li><a href="#" class="button" onclick="openModal('modal5'); return false;">اقرأ المزيد</a></li>
+                            </ul>
+                        </article>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="announcements-ar.html" class="button primary large">عرض جميع الإعلانات</a>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section>
+                    <header class="major">
+                        <h2>خدماتنا</h2>
+                    </header>
+                    <div class="features">
+                        <article>
+                            <span class="icon solid fa-id-card"></span>
+                            <div class="content">
+                                <h3>رخص القيادة</h3>
+                                <p>التقدم بطلب وتجديد رخص القيادة لجميع فئات المركبات.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span class="icon solid fa-car"></span>
+                            <div class="content">
+                                <h3>تسجيل المركبات</h3>
+                                <p>تسجيل المركبات الجديدة وتحديث معلومات المركبات.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span class="icon solid fa-file-alt"></span>
+                            <div class="content">
+                                <h3>تصاريح النقل</h3>
+                                <p>الحصول على تصاريح للنقل التجاري والعام.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span class="icon solid fa-clipboard-check"></span>
+                            <div class="content">
+                                <h3>فحوصات السلامة</h3>
+                                <p>فحوصات منتظمة لسلامة المركبات وصلاحيتها للسير.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+            </div>
+            <!-- END OF .inner -->
+            
+            <!-- MAIN WEBSITE FOOTER  -->
+            <footer id="main-footer">
+                <div class="inner">
+                    <div class="footer-columns">
+                        <!-- Column 1: About -->
+                        <div class="footer-column">
+                            <h3>وزارة النقل</h3>
+                            <p>الجمهورية العربية السورية</p>
+                            <p>بناء مستقبل النقل من خلال الابتكار والسلامة والاستدامة. نحن ملتزمون بخدمة جميع المواطنين بحلول نقل فعالة وحديثة.</p>
+                        </div>
+                        
+                        <!-- Column 2: Quick Links -->
+                        <div class="footer-column">
+                            <h3>روابط سريعة</h3>
+                            <ul>
+                                <li><a href="index-ar.html">الرئيسية</a></li>
+                                <li><a href="about-ar.html">من نحن</a></li>
+                                <li><a href="mission-ar.html">المهمة والرؤية</a></li>
+                                <li><a href="services-ar.html">خدماتنا</a></li>
+                                <li><a href="departments-ar.html">الإدارات</a></li>
+                                <li><a href="statistics-ar.html">الإحصائيات</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 3: Services -->
+                        <div class="footer-column">
+                            <h3>خدماتنا</h3>
+                            <ul>
+                                <li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+                                <li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+                                <li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+                                <li><a href="services-ar.html">برامج السلامة على الطرق</a></li>
+                                <li><a href="services-ar.html">فحص المركبات</a></li>
+                                <li><a href="services-ar.html">النقل العام</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 4: Contact -->
+                        <div class="footer-column">
+                            <h3>معلومات الاتصال</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i> دمشق، سوريا</li>
+                                <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                                <li><i class="fas fa-fax"></i> +963 11 332 3317</li>
+                                <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                            </ul>
+                            
+                            <h3>تابعنا</h3>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="فيسبوك">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://x.com/SyrSMOT" target="_blank" title="تويتر">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="يوتيوب">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" title="لينكد إن">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 وزارة النقل السورية. جميع الحقوق محفوظة. | تصميم الموقع بواسطة حمزة الحلبي لدورة تصميم الويب بجامعة كوجالي</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- END OF MAIN FOOTER -->
+            
+        </div>
+        <!-- END OF #main -->
+
+        <!-- Sidebar -->
+
+        <div id="sidebar" class="inactive">
+              <a href="#sidebar" class="toggle">تبديل</a>
+            <div class="inner">
+
+                <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="بحث" />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>القائمة</h2>
+                    </header>
+                    <ul>
+                        <li><a href="index-ar.html">الرئيسية</a></li>
+                        <li><a href="about-ar.html">من نحن</a></li>
+                        <li><a href="mission-ar.html">المهمة والرؤية</a></li>
+                        <li>
+                            <span class="opener">الإدارات</span>
+                            <ul>
+                                <li><a href="departments-ar.html#road">النقل البري</a></li>
+                                <li><a href="departments-ar.html#rail">النقل بالسكك الحديدية</a></li>
+                                <li><a href="departments-ar.html#maritime">النقل البحري</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">الخدمات</span>
+                            <ul>
+                                <li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+                                <li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+                                <li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="statistics-ar.html">الإحصائيات</a></li>
+                        <li><a href="contact-ar.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Info -->
+                <section>
+                    <header class="major">
+                        <h2>تواصل معنا</h2>
+                    </header>
+                    <p>نرحب بأسئلتكم واقتراحاتكم وملاحظاتكم.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+                        <li class="icon solid fa-phone">+963 11 333 6801</li>
+                        <li class="icon solid fa-home">دمشق، سوريا</li>
+                    </ul>
+                </section>
+
+                <!-- Sidebar Footer  -->
+                <footer id="footer">
+                    <p class="copyright">&copy; 2025 وزارة النقل السورية. جميع الحقوق محفوظة.</p>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- END OF WRAPPER -->
+
+    <!-- Modal Structure for Announcements -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>إطلاق مشروع طريق سريع جديد</h2>
+            <p class="date"><i class="far fa-calendar"></i> 1 أكتوبر 2025</p>
+            <img src="images/announcements/announce1.jpg" alt="الإعلان 1" style="width:100%; margin: 1rem 0; border-radius: 8px;">
+            <p>يسر وزارة النقل أن تعلن عن إطلاق مشروع رئيسي جديد للطرق السريعة من شأنه أن يربط دمشق بحلب من خلال طريق سريع حديث متعدد المسارات. يمثل هذا المشروع استثماراً كبيراً في البنية التحتية لسوريا وسيقلل من وقت السفر بين المدينتين بنحو 30٪.</p>
+            <p>سيشمل الطريق السريع أحدث أنظمة السلامة ومناطق الراحة ومرافق الخدمات. من المتوقع أن يبدأ البناء في أوائل عام 2026، مع استهداف الانتهاء في عام 2028. سيوفر هذا المشروع آلاف فرص العمل وسيحسن بشكل كبير من كفاءة النقل في جميع أنحاء البلاد.</p>
+            <p>لمزيد من المعلومات، يرجى الاتصال بقسم العلاقات العامة أو زيارة مكتبنا.</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>توسيع النقل العام</h2>
+            <p class="date"><i class="far fa-calendar"></i> 28 سبتمبر 2025</p>
+            <img src="images/announcements/announce2.jpg" alt="الإعلان 2" style="width:100%; margin: 1rem 0; border-radius: 8px;">
+            <p>قامت وزارة النقل بتوسيع خدمات الحافلات العامة مع خطوط جديدة تخدم الأحياء التي كانت تعاني من نقص في الخدمات في جميع أنحاء المدن الكبرى. هذا التوسع جزء من التزامنا بتوفير وسائل نقل عامة يسهل الوصول إليها وبأسعار معقولة لجميع المواطنين.</p>
+            <p>تشمل الخطوط الجديدة روابط بالمناطق السكنية والمناطق التجارية والمؤسسات التعليمية. ستخدم هذه الخطوط حافلات حديثة مجهزة بتكييف الهواء ومرافق إمكانية الوصول. سيستفيد من هذا التوسع أكثر من 50,000 مسافر يومياً.</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>برنامج تحديث السكك الحديدية</h2>
+            <p class="date"><i class="far fa-calendar"></i> 25 سبتمبر 2025</p>
+            <img src="images/announcements/announce3.jpg" alt="الإعلان 3" style="width:100%; margin: 1rem 0; border-radius: 8px;">
+            <p>تم إطلاق برنامج شامل لتحديث السكك الحديدية لترقية المسارات والمحطات والعربات المتحركة. سيؤدي هذا الاستثمار متعدد السنوات إلى تحسين راحة الركاب والسلامة وأوقات الرحلات بشكل كبير عبر شبكة السكك الحديدية الوطنية.</p>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>إطلاق حملة السلامة</h2>
+            <p class="date"><i class="far fa-calendar"></i> 20 سبتمبر 2025</p>
+            <img src="images/announcements/announce4.jpg" alt="الإعلان 4" style="width:100%; margin: 1rem 0; border-radius: 8px;">
+            <p>أطلقت الوزارة حملة توعية وطنية بالسلامة على الطرق تركز على تقليل حوادث المرور وتعزيز ممارسات القيادة الآمنة. تشمل الحملة برامج تعليمية في المدارس والتواصل الإعلامي وتعزيز الإنفاذ.</p>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>بوابة الخدمات الرقمية</h2>
+            <p class="date"><i class="far fa-calendar"></i> 15 سبتمبر 2025</p>
+            <img src="images/announcements/announce5.jpg" alt="الإعلان 5" style="width:100%; margin: 1rem 0; border-radius: 8px;">
+            <p>يمكن للمواطنين الآن الوصول إلى الخدمات المتعلقة بالنقل عبر الإنترنت من خلال بوابتنا الرقمية الجديدة. تشمل الخدمات تجديد الرخص وتسجيل المركبات وحجز المواعيد وطلبات المستندات. البوابة متاحة على مدار الساعة طوال أيام الأسبوع لراحتك.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var sidebar = document.getElementById('sidebar');
+    var tgl = sidebar ? sidebar.querySelector('.toggle') : null;
+
+    if (!sidebar || !tgl) return;
+
+    tgl.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      sidebar.classList.toggle('inactive');
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menu = document.getElementById('navbarMenu');
+    const navbar = document.querySelector('.navbar');
+    const dropdownLinks = document.querySelectorAll('.dropdown > a');
+
+    // SAFETY: if menu or navbar not found, stop
+    if (!menu || !navbar) return;
+
+    // Make toggleMenu available for the inline onclick=""
+    window.toggleMenu = function () {
+      menu.classList.toggle('active');
+    };
+
+    // Mobile dropdown toggle
+    dropdownLinks.forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        if (window.innerWidth <= 968) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('active');
+        }
+      });
+    });
+
+    // Close menu when clicking outside navbar
+    document.addEventListener('click', function (e) {
+      if (!navbar.contains(e.target) && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+      }
+    });
+  });
+</script>
+<button class="scroll-to-top" id="scrollToTop" title="العودة للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>

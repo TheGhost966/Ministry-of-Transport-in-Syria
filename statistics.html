@@ -1,0 +1,565 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="images/favicon_32x32.png">
+    <title>Statistics - Ministry of Transport</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Statistics Card Styles */
+        .stat-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .stat-card i {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .stat-card h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: white;
+        }
+        
+        .stat-card p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+            color: white;
+        }
+        
+        /* Chart Container Styles */
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #1e3a8a;
+            font-size: 1.2rem;
+        }
+        
+        .chart-container canvas {
+            max-height: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .stat-card h2 {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="is-preload">
+       <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="statistics-ar.html">
+            <i class="fas fa-language"></i>
+            <span>العربية</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="Ministry Logo">
+                <h1>Ministry of Transport</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments.html">
+                        <i class="fas fa-building"></i> Departments
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments.html#road"><i class="fas fa-road"></i> Road Transport</a>
+                        <a href="departments.html#rail"><i class="fas fa-train"></i> Rail Transport</a>
+                        <a href="departments.html#maritime"><i class="fas fa-ship"></i> Maritime Transport</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services.html">
+                        <i class="fas fa-cogs"></i> Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services.html#licenses"><i class="fas fa-id-card"></i> Driving Licenses</a>
+                        <a href="services.html#registration"><i class="fas fa-car"></i> Vehicle Registration</a>
+                        <a href="services.html#permits"><i class="fas fa-file-alt"></i> Transport Permits</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="Admin Login">
+                         <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index-ar.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> العربية
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo">
+                        <span class="symbol"><img src="images/logo.png" alt="Ministry Logo" style="width: 40px; height: 40px;" /></span>
+                        <strong>Ministry of Transport</strong>
+                    </a>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>Ministry of Transport in Numbers</h1>
+                        <p>Key statistics and data about transportation in Syria</p>
+                    </header>
+                    
+                    <!-- Statistics Cards -->
+                    <div class="row gtr-uniform" style="margin-bottom: 3rem;">
+                        <div class="col-3 col-12-medium">
+                            <div class="stat-card">
+                                <i class="fas fa-users fa-3x"></i>
+                                <h2>67,932</h2>
+                                <p>Daily Passengers</p>
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-medium">
+                            <div class="stat-card">
+                                <i class="fas fa-car fa-3x"></i>
+                                <h2>2,206</h2>
+                                <p>Registered Vehicles</p>
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-medium">
+                            <div class="stat-card">
+                                <i class="fas fa-road fa-3x"></i>
+                                <h2>2,704</h2>
+                                <p>Kilometers of Roads</p>
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-medium">
+                            <div class="stat-card">
+                                <i class="fas fa-building fa-3x"></i>
+                                <h2>16</h2>
+                                <p>Regional Offices</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts -->
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-medium">
+                            <div class="chart-container">
+                                <h3>Annual Passenger Numbers by Transport Type</h3>
+                                <canvas id="passengerChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-12-medium">
+                            <div class="chart-container">
+                                <h3>Budget Allocation by Department</h3>
+                                <canvas id="budgetChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-12-medium">
+                            <div class="chart-container">
+                                <h3>Infrastructure Investment (2020-2025)</h3>
+                                <canvas id="investmentChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-12-medium">
+                            <div class="chart-container">
+                                <h3>Vehicle Registration by Type</h3>
+                                <canvas id="vehicleChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <footer id="main-footer">
+                <div class="inner">
+                    <div class="footer-columns">
+                        <!-- Column 1: About -->
+                        <div class="footer-column">
+                            <h3>Ministry of Transport</h3>
+                            <p>Syrian Arab Republic</p>
+                            <p>Building the future of transportation through innovation, safety, and sustainability. We are committed to serving all citizens with efficient and modern transportation solutions.</p>
+                        </div>
+                        
+                        <!-- Column 2: Quick Links -->
+                        <div class="footer-column">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="mission.html">Mission & Vision</a></li>
+                                <li><a href="services.html">Our Services</a></li>
+                                <li><a href="departments.html">Departments</a></li>
+                                <li><a href="statistics.html">Statistics</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 3: Services -->
+                        <div class="footer-column">
+                            <h3>Our Services</h3>
+                            <ul>
+                                <li><a href="services.html#licenses">Driving Licenses</a></li>
+                                <li><a href="services.html#registration">Vehicle Registration</a></li>
+                                <li><a href="services.html#permits">Transport Permits</a></li>
+                                <li><a href="services.html">Road Safety Programs</a></li>
+                                <li><a href="services.html">Vehicle Inspection</a></li>
+                                <li><a href="services.html">Public Transport</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 4: Contact -->
+                        <div class="footer-column">
+                            <h3>Contact Information</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+                                <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                                <li><i class="fas fa-fax"></i> +963 11 332 3317</li>
+                                <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                            </ul>
+                            
+                            <h3>Follow Us</h3>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by Hamza Al Halabi for Kocaeli University Web Design Course</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Mission & Vision</a></li>
+                        <li>
+                            <span class="opener">Departments</span>
+                            <ul>
+                                <li><a href="departments.html#road">Road Transport</a></li>
+                                <li><a href="departments.html#rail">Rail Transport</a></li>
+                                <li><a href="departments.html#maritime">Maritime Transport</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Services</span>
+                            <ul>
+                                <li><a href="services.html#licenses">Driving Licenses</a></li>
+                                <li><a href="services.html#registration">Vehicle Registration</a></li>
+                                <li><a href="services.html#permits">Transport Permits</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="statistics.html">Statistics</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Info -->
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <p>We welcome your questions, suggestions, and feedback.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+                        <li class="icon solid fa-phone">+963 11 333 6801</li>
+                        <li class="icon solid fa-home">Damascus, Syria</li>
+                    </ul>
+                </section>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <div class="inner">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Ministry of Transport</h3>
+                                <p>Syrian Arab Republic</p>
+                                <p>Building the future of transportation through innovation, safety, and sustainability.</p>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>Quick Links</h3>
+                                <ul class="alt">
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="services.html">Our Services</a></li>
+                                    <li><a href="departments.html">Departments</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>Contact Information</h3>
+                                <ul class="alt">
+                                    <li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+                                    <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                                    <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                                </ul>
+                                
+                                <h3>Follow Us</h3>
+                                <ul class="icons">
+                                    <li><a href="https://www.facebook.com/SyrSMOT/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="https://x.com/SyrSMOT" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                                    <li><a href="https://www.youtube.com/@mot-gov" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="copyright">
+                            <p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by Hamza Al Halabi for Kocaeli University Web Design Course</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- Chart.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <script>
+        // Passenger Chart (Bar)
+        const passengerCtx = document.getElementById('passengerChart').getContext('2d');
+        const passengerChart = new Chart(passengerCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Bus', 'Train', 'Metro', 'Taxi', 'Private'],
+                datasets: [{
+                    label: 'Daily Passengers (thousands)',
+                    data: [25, 15, 12, 8, 7.9],
+                    backgroundColor: [
+                        'rgba(30, 58, 138, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(13, 148, 136, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(16, 185, 129, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(30, 58, 138, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(13, 148, 136, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(16, 185, 129, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Budget Chart (Pie)
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(budgetCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Road Transport', 'Rail Transport', 'Maritime', 'Aviation', 'Administration'],
+                datasets: [{
+                    data: [35, 25, 15, 15, 10],
+                    backgroundColor: [
+                        'rgba(30, 58, 138, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(13, 148, 136, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(16, 185, 129, 0.8)'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Investment Chart (Line)
+        const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+        const investmentChart = new Chart(investmentCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Investment (Million USD)',
+                    data: [150, 180, 220, 280, 350, 420],
+                    borderColor: 'rgba(30, 58, 138, 1)',
+                    backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Vehicle Chart (Doughnut)
+        const vehicleCtx = document.getElementById('vehicleChart').getContext('2d');
+        const vehicleChart = new Chart(vehicleCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Private Cars', 'Buses', 'Trucks', 'Motorcycles', 'Others'],
+                datasets: [{
+                    data: [45, 20, 18, 12, 5],
+                    backgroundColor: [
+                        'rgba(30, 58, 138, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(13, 148, 136, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(16, 185, 129, 0.8)'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+<button class="scroll-to-top" id="scrollToTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>

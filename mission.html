@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+     <link rel="icon" type="image/png" href="images/favicon_32x32.png">
+
+    <title>Mission & Vision - Ministry of Transport</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Mission & Vision Styles */
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            border-left: 5px solid #1e3a8a;
+        }
+        
+        .content-box .icon {
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-size: 3rem;
+        }
+        
+        .content-box h2 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .content-box h3 {
+            color: #3b82f6;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .content-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .content-box ul li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .content-box ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0d9488;
+            font-weight: bold;
+        }
+        
+        .mission-vision-section {
+            margin-bottom: 3rem;
+        }
+        
+        /* Value Cards */
+        .values-section h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .values-section > p {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .value-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .value-card i {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .value-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .value-card p {
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 980px) {
+            .content-box {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 1.5rem;
+            }
+            
+            .value-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="is-preload">
+       <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="mission-ar.html">
+            <i class="fas fa-language"></i>
+            <span>العربية</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="Ministry Logo">
+                <h1>Ministry of Transport</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments.html">
+                        <i class="fas fa-building"></i> Departments
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments.html#road"><i class="fas fa-road"></i> Road Transport</a>
+                        <a href="departments.html#rail"><i class="fas fa-train"></i> Rail Transport</a>
+                        <a href="departments.html#maritime"><i class="fas fa-ship"></i> Maritime Transport</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services.html">
+                        <i class="fas fa-cogs"></i> Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services.html#licenses"><i class="fas fa-id-card"></i> Driving Licenses</a>
+                        <a href="services.html#registration"><i class="fas fa-car"></i> Vehicle Registration</a>
+                        <a href="services.html#permits"><i class="fas fa-file-alt"></i> Transport Permits</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="Admin Login">
+                         <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index-ar.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> العربية
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo">
+                        <span class="symbol"><img src="images/logo.png" alt="Ministry Logo" style="width: 40px; height: 40px;" /></span>
+                        <strong>Ministry of Transport</strong>
+                    </a>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>Our Mission & Vision</h1>
+                        <p class="subtitle">Guiding principles for a sustainable and efficient transportation future</p>
+                    </header>
+
+                    <div class="mission-vision-section">
+                        <div class="row gtr-200">
+                            <div class="col-6 col-12-medium">
+                                <div class="content-box">
+                                    <span class="icon solid fa-bullseye"></span>
+                                    <h2>Our Mission</h2>
+                                    <p>To develop, regulate, and maintain a safe, efficient, and sustainable transportation system that supports economic growth, enhances national connectivity, and improves the quality of life for all citizens of Syria. We are committed to fostering innovation, ensuring accessibility, and upholding the highest standards of safety and environmental responsibility across all modes of transport.</p>
+                                    
+                                    <h3>Key Pillars of Our Mission:</h3>
+                                    <ul>
+                                        <li><strong>Safety:</strong> Prioritizing the safety and security of passengers and cargo.</li>
+                                        <li><strong>Efficiency:</strong> Optimizing transport networks for speed and reliability.</li>
+                                        <li><strong>Sustainability:</strong> Promoting environmentally friendly transport solutions.</li>
+                                        <li><strong>Connectivity:</strong> Enhancing national and international links.</li>
+                                        <li><strong>Innovation:</strong> Embracing new technologies and practices.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <div class="content-box">
+                                    <span class="icon solid fa-eye"></span>
+                                    <h2>Our Vision</h2>
+                                    <p>To be a leading regional ministry recognized for its advanced, integrated, and resilient transportation infrastructure that serves as a cornerstone for Syria's prosperity. We envision a future where all citizens have access to modern, affordable, and seamless transport options, contributing to a vibrant economy and a connected society.</p>
+                                    
+                                    <h3>Our Vision for the Future:</h3>
+                                    <ul>
+                                        <li><strong>Integrated Networks:</strong> Seamless connections across all transport modes.</li>
+                                        <li><strong>Technological Advancement:</strong> Utilizing smart technologies for transport management.</li>
+                                        <li><strong>Environmental Leadership:</strong> Pioneering green transport initiatives.</li>
+                                        <li><strong>Public Satisfaction:</strong> Meeting and exceeding the expectations of our users.</li>
+                                        <li><strong>Regional Hub:</strong> Positioning Syria as a key transport hub in the region.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="major" />
+
+                    <div class="values-section">
+                        <h2>Our Core Values</h2>
+                        <p>These values guide our actions and decisions every day.</p>
+                        <div class="row gtr-uniform">
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-handshake fa-3x"></i>
+                                    <h3>Integrity</h3>
+                                    <p>Upholding honesty, transparency, and ethical conduct in all our operations and interactions.</p>
+                                </div>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-users fa-3x"></i>
+                                    <h3>Service Excellence</h3>
+                                    <p>Committing to provide high-quality, responsive, and citizen-focused services.</p>
+                                </div>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-lightbulb fa-3x"></i>
+                                    <h3>Innovation</h3>
+                                    <p>Continuously seeking new and better ways to improve transportation and operational efficiency.</p>
+                                </div>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-leaf fa-3x"></i>
+                                    <h3>Environmental Stewardship</h3>
+                                    <p>Protecting the environment through sustainable practices and green transport initiatives.</p>
+                                </div>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-shield-alt fa-3x"></i>
+                                    <h3>Safety</h3>
+                                    <p>Ensuring the highest levels of safety and security for all transportation modes and users.</p>
+                                </div>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <div class="value-card">
+                                    <i class="fas fa-gavel fa-3x"></i>
+                                    <h3>Accountability</h3>
+                                    <p>Taking responsibility for our actions and being transparent in our decision-making processes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+             <footer id="main-footer">
+                <div class="inner">
+                    <div class="footer-columns">
+                        <!-- Column 1: About -->
+                        <div class="footer-column">
+                            <h3>Ministry of Transport</h3>
+                            <p>Syrian Arab Republic</p>
+                            <p>Building the future of transportation through innovation, safety, and sustainability. We are committed to serving all citizens with efficient and modern transportation solutions.</p>
+                        </div>
+                        
+                        <!-- Column 2: Quick Links -->
+                        <div class="footer-column">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="mission.html">Mission & Vision</a></li>
+                                <li><a href="services.html">Our Services</a></li>
+                                <li><a href="departments.html">Departments</a></li>
+                                <li><a href="statistics.html">Statistics</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 3: Services -->
+                        <div class="footer-column">
+                            <h3>Our Services</h3>
+                            <ul>
+                                <li><a href="services.html#licenses">Driving Licenses</a></li>
+                                <li><a href="services.html#registration">Vehicle Registration</a></li>
+                                <li><a href="services.html#permits">Transport Permits</a></li>
+                                <li><a href="services.html">Road Safety Programs</a></li>
+                                <li><a href="services.html">Vehicle Inspection</a></li>
+                                <li><a href="services.html">Public Transport</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 4: Contact -->
+                        <div class="footer-column">
+                            <h3>Contact Information</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+                                <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                                <li><i class="fas fa-fax"></i> +963 11 332 3317</li>
+                                <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                            </ul>
+                            
+                            <h3>Follow Us</h3>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by Hamza Al Halabi for Kocaeli University Web Design Course</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Mission & Vision</a></li>
+                        <li>
+                            <span class="opener">Departments</span>
+                            <ul>
+                                <li><a href="departments.html#road">Road Transport</a></li>
+                                <li><a href="departments.html#rail">Rail Transport</a></li>
+                                <li><a href="departments.html#maritime">Maritime Transport</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Services</span>
+                            <ul>
+                                <li><a href="services.html#licenses">Driving Licenses</a></li>
+                                <li><a href="services.html#registration">Vehicle Registration</a></li>
+                                <li><a href="services.html#permits">Transport Permits</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="statistics.html">Statistics</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Info -->
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <p>We welcome your questions, suggestions, and feedback.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+                        <li class="icon solid fa-phone">+963 11 333 6801</li>
+                        <li class="icon solid fa-home">Damascus, Syria</li>
+                    </ul>
+                </section>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <div class="inner">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Ministry of Transport</h3>
+                                <p>Syrian Arab Republic</p>
+                                <p>Building the future of transportation through innovation, safety, and sustainability.</p>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>Quick Links</h3>
+                                <ul class="alt">
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="services.html">Our Services</a></li>
+                                    <li><a href="departments.html">Departments</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>Contact Information</h3>
+                                <ul class="alt">
+                                    <li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+                                    <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                                    <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                                </ul>
+                                
+                                <h3>Follow Us</h3>
+                                <ul class="icons">
+                                    <li><a href="https://www.facebook.com/SyrSMOT/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="https://x.com/SyrSMOT" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                                    <li><a href="https://www.youtube.com/@mot-gov" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="copyright">
+                            <p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by [Your Name] for Kocaeli University Web Design Course</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+<button class="scroll-to-top" id="scrollToTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>

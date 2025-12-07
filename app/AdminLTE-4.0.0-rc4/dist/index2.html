@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Ministry of Transport</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 250px;
+            background: #1e3c72;
+            color: white;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header h3 {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-header img {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu li a:hover,
+        .sidebar-menu li a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .sidebar-menu li a i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 0;
+            transition: all 0.3s;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-header h2 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            padding: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .stat-icon.blue { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+        .stat-icon.green { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+        .stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #f97316); }
+        .stat-icon.red { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+        .stat-details h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .chart-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        /* Recent Activities */
+        .recent-activities {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .recent-activities h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .activity-icon.blue { background: #e0f2fe; color: #0284c7; }
+        .activity-icon.green { background: #d1fae5; color: #059669; }
+        .activity-icon.orange { background: #fed7aa; color: #ea580c; }
+
+        .activity-details {
+            flex: 1;
+        }
+
+        .activity-details h4 {
+            color: #333;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-details p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .activity-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .sidebar {
+                left: -250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="app/logo.png" alt="Logo">
+            <h3>Ministry of Transport</h3>
+            <p style="font-size: 0.85rem; opacity: 0.8;">Admin Dashboard</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-car"></i> Vehicles</a></li>
+            <li><a href="#"><i class="fas fa-id-card"></i> Licenses</a></li>
+            <li><a href="#"><i class="fas fa-file-alt"></i> Permits</a></li>
+            <li><a href="#"><i class="fas fa-road"></i> Roads</a></li>
+            <li><a href="#"><i class="fas fa-train"></i> Railways</a></li>
+            <li><a href="#"><i class="fas fa-ship"></i> Maritime</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Statistics</a></li>
+            <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <div class="top-header">
+            <h2>Dashboard Overview</h2>
+            <div class="user-info">
+                <span>Welcome, <strong>Admin</strong></span>
+                <img src="app/AdminLTE-4.0.0-rc4/assets/img/avatar.png" alt="User">
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>45,230</h3>
+                        <p>Registered Vehicles</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>23,456</h3>
+                        <p>Active Licenses</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>1,234</h3>
+                        <p>Pending Permits</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>89</h3>
+                        <p>Road Incidents</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Monthly Statistics</h3>
+                    <div class="chart-placeholder">
+                        <div style="text-align: center;">
+                            <i class="fas fa-chart-area" style="font-size: 3rem; opacity: 0.3;"></i>
+                            <p>Chart: Vehicle Registrations vs License Issues</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-pie"></i> Department Breakdown</h3>
+                    <div class="chart-placeholder">
+                        <div style="text-align: center;">
+                            <i class="fas fa-chart-pie" style="font-size: 3rem; opacity: 0.3;"></i>
+                            <p>Pie Chart: Service Distribution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="recent-activities">
+                <h3><i class="fas fa-history"></i> Recent Activities</h3>
+                
+                <div class="activity-item">
+                    <div class="activity-icon blue">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>New Vehicle Registration</h4>
+                        <p>Vehicle #SY-12345 registered successfully</p>
+                        <span class="activity-time">2 minutes ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon green">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>License Issued</h4>
+                        <p>Driving license issued to Ahmad Hassan</p>
+                        <span class="activity-time">15 minutes ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon orange">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Permit Approved</h4>
+                        <p>Commercial transport permit #PT-5678 approved</p>
+                        <span class="activity-time">1 hour ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon blue">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Road Maintenance Scheduled</h4>
+                        <p>Damascus-Aleppo highway maintenance scheduled for next week</p>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-details">
+                        <h4>Safety Inspection Completed</h4>
+                        <p>50 vehicles passed safety inspection today</p>
+                        <span class="activity-time">3 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add any interactive JavaScript here
+        console.log('Ministry of Transport Dashboard loaded');
+    </script>
+</body>
+</html>

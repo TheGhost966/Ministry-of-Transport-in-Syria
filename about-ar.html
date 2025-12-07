@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<html dir="rtl" lang="ar">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon_32x32.png">
+    <title>من نحن - وزارة النقل</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
+    <!-- Arabic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RTL-specific overrides */
+        [dir="rtl"] body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            text-align: right;
+        }
+        
+        [dir="rtl"] #menu ul {
+            text-align: right;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .language-switcher a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .language-switcher a:hover {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="about.html">
+            <i class="fas fa-language"></i>
+            <span>English</span>
+        </a>
+    </div>
+     <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="Ministry Logo">
+                <h1>Ministry of Transport</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+<!-- شريط تنقل ثابت -->
+<nav class="navbar">
+    <div class="navbar-container">
+
+        <!-- زر القائمة للجوال -->
+        <button class="mobile-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- القائمة -->
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="index-ar.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="about-ar.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+
+            <!-- قائمة الإدارات -->
+            <li class="dropdown">
+                <a href="departments-ar.html">
+                    <i class="fas fa-building"></i> الإدارات
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="departments-ar.html#road"><i class="fas fa-road"></i> النقل البري</a>
+                    <a href="departments-ar.html#rail"><i class="fas fa-train"></i> النقل بالسكك الحديدية</a>
+                    <a href="departments-ar.html#maritime"><i class="fas fa-ship"></i> النقل البحري</a>
+                </div>
+            </li>
+
+            <!-- قائمة الخدمات -->
+            <li class="dropdown">
+                <a href="services-ar.html">
+                    <i class="fas fa-cogs"></i> الخدمات
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="services-ar.html#licenses"><i class="fas fa-id-card"></i> رخص القيادة</a>
+                    <a href="services-ar.html#registration"><i class="fas fa-car"></i> تسجيل المركبات</a>
+                    <a href="services-ar.html#permits"><i class="fas fa-file-alt"></i> تصاريح النقل</a>
+                </div>
+            </li>
+
+            <li><a href="statistics-ar.html"><i class="fas fa-chart-bar"></i> الإحصائيات</a></li>
+            <li><a href="contact-ar.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+
+            <!-- دخول الإدارة -->
+            <li>
+                <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="دخول الإدارة">
+                    <i class="fas fa-user-shield"></i> الإدارة
+                </a>
+            </li>
+
+            <!-- تغيير اللغة -->
+            <li>
+                <a href="index.html" class="lang-switcher">
+                    <i class="fas fa-language"></i> English
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index-ar.html" class="logo">
+                        <span class="symbol"><img src="images/logo.png" alt="شعار الوزارة" style="width: 40px; height: 40px;" /></span>
+                        <strong>وزارة النقل</strong>
+                    </a>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">فيسبوك</span></a></li>
+                        <li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">تويتر</span></a></li>
+                        <li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">يوتيوب</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>عن وزارة النقل</h1>
+                    </header>
+
+                    <span class="image main"><img src="images/ministry.jpg" alt="مبنى الوزارة" /></span>
+
+                    <h2>تاريخنا</h2>
+                    <p>تأسست وزارة النقل في الجمهورية العربية السورية عام 1946، بعد فترة وجيزة من الاستقلال. منذ إنشائها، كانت الوزارة مسؤولة عن تطوير وصيانة البنية التحتية للنقل في البلاد، بما في ذلك الطرق والسكك الحديدية والموانئ والمطارات.</p>
+
+                    <p>على مدى العقود، أشرفت الوزارة على تطورات كبيرة في شبكة النقل السورية، حيث ربطت المدن والمناطق الريفية، وسهلت التجارة، وحسنت نوعية الحياة لملايين المواطنين. اليوم، نواصل العمل على تحديث بنيتنا التحتية وتنفيذ حلول النقل المستدامة.</p>
+
+                    <hr class="major" />
+
+                    <h2>الهيكل التنظيمي</h2>
+                    <div class="row gtr-200">
+                        <div class="col-6 col-12-medium">
+                            <h3><i class="fas fa-user-tie"></i> وزير النقل</h3>
+                            <p>يشرف الوزير على جميع عمليات الوزارة ويحدد التوجه الاستراتيجي لسياسة النقل.</p>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <h3><i class="fas fa-users"></i> نواب الوزير</h3>
+                            <p>يدير نواب الوزير قطاعات محددة بما في ذلك الطرق والسكك الحديدية والنقل البحري.</p>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <h3><i class="fas fa-building"></i> المديرية العامة</h3>
+                            <p>تتعامل المديرية العامة مع الوظائف الإدارية والتشغيلية اليومية.</p>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <h3><i class="fas fa-project-diagram"></i> الإدارات الفنية</h3>
+                            <p>تدير الإدارات المتخصصة عمليات الهندسة والتخطيط والسلامة.</p>
+                        </div>
+                    </div>
+
+                    <hr class="major" />
+
+                    <h2>التزامنا</h2>
+                    <blockquote>
+                        "نحن ملتزمون ببناء نظام نقل حديث وفعال ومستدام يخدم جميع المواطنين السوريين ويدعم التنمية الاقتصادية."
+                    </blockquote>
+
+                    <p>تلتزم وزارة النقل بالتحسين المستمر والابتكار والتميز في خدمة الجمهور. نعمل بشكل وثيق مع الشركاء الدوليين، ونعتمد أفضل الممارسات، ونستثمر في قوتنا العاملة لضمان أعلى معايير تقديم الخدمات.</p>
+                </section>
+
+            </div>
+            
+            <!-- Main Footer -->
+            <footer id="main-footer">
+                <div class="inner">
+                    <div class="footer-columns">
+                        <!-- Column 1: About -->
+                        <div class="footer-column">
+                            <h3>وزارة النقل</h3>
+                            <p>الجمهورية العربية السورية</p>
+                            <p>بناء مستقبل النقل من خلال الابتكار والسلامة والاستدامة. نحن ملتزمون بخدمة جميع المواطنين بحلول نقل فعالة وحديثة.</p>
+                        </div>
+                        
+                        <!-- Column 2: Quick Links -->
+                        <div class="footer-column">
+                            <h3>روابط سريعة</h3>
+                            <ul>
+                                <li><a href="index-ar.html">الرئيسية</a></li>
+                                <li><a href="about-ar.html">من نحن</a></li>
+                                <li><a href="mission-ar.html">الرؤية والرسالة</a></li>
+                                <li><a href="services-ar.html">خدماتنا</a></li>
+                                <li><a href="departments-ar.html">الإدارات</a></li>
+                                <li><a href="statistics-ar.html">الإحصائيات</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 3: Services -->
+                        <div class="footer-column">
+                            <h3>خدماتنا</h3>
+                            <ul>
+                                <li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+                                <li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+                                <li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+                                <li><a href="services-ar.html">برامج السلامة على الطرق</a></li>
+                                <li><a href="services-ar.html">فحص المركبات</a></li>
+                                <li><a href="services-ar.html">النقل العام</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 4: Contact -->
+                        <div class="footer-column">
+                            <h3>معلومات الاتصال</h3>
+                            <ul>
+                                <li><i class="fas fa-map-marker-alt"></i> دمشق، سوريا</li>
+                                <li><i class="fas fa-phone"></i> 6801 333 11 963+</li>
+                                <li><i class="fas fa-fax"></i> 3317 332 11 963+</li>
+                                <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                            </ul>
+                            
+                            <h3>تابعنا</h3>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="فيسبوك">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://x.com/SyrSMOT" target="_blank" title="تويتر">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="يوتيوب">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" title="لينكد إن">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <p>© 2025 وزارة النقل السورية. جميع الحقوق محفوظة. | تصميم الموقع بواسطة حمزة الحلبي لدورة تصميم الويب - جامعة كوجالي</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="inactive">
+            <a href="#sidebar" class="toggle">Toggle</a>
+            <div class="inner">
+
+                <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="بحث" />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>القائمة</h2>
+                    </header>
+                    <ul>
+                        <li><a href="index-ar.html">الرئيسية</a></li>
+                        <li><a href="about-ar.html">من نحن</a></li>
+                        <li><a href="mission-ar.html">الرؤية والرسالة</a></li>
+                        <li>
+                            <span class="opener">الإدارات</span>
+                            <ul>
+                                <li><a href="departments-ar.html#road">النقل البري</a></li>
+                                <li><a href="departments-ar.html#rail">النقل بالسكك الحديدية</a></li>
+                                <li><a href="departments-ar.html#maritime">النقل البحري</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">الخدمات</span>
+                            <ul>
+                                <li><a href="services-ar.html#licenses">رخص القيادة</a></li>
+                                <li><a href="services-ar.html#registration">تسجيل المركبات</a></li>
+                                <li><a href="services-ar.html#permits">تصاريح النقل</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="statistics-ar.html">الإحصائيات</a></li>
+                        <li><a href="contact-ar.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Info -->
+                <section>
+                    <header class="major">
+                        <h2>تواصل معنا</h2>
+                    </header>
+                    <p>نرحب بأسئلتكم واقتراحاتكم وملاحظاتكم.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+                        <li class="icon solid fa-phone">6801 333 11 963+</li>
+                        <li class="icon solid fa-home">دمشق، سوريا</li>
+                    </ul>
+                </section>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <div class="inner">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>وزارة النقل</h3>
+                                <p>الجمهورية العربية السورية</p>
+                                <p>بناء مستقبل النقل من خلال الابتكار والسلامة والاستدامة.</p>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>روابط سريعة</h3>
+                                <ul class="alt">
+                                    <li><a href="about-ar.html">من نحن</a></li>
+                                    <li><a href="services-ar.html">خدماتنا</a></li>
+                                    <li><a href="departments-ar.html">الإدارات</a></li>
+                                    <li><a href="contact-ar.html">اتصل بنا</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-12">
+                                <h3>معلومات الاتصال</h3>
+                                <ul class="alt">
+                                    <li><i class="fas fa-map-marker-alt"></i> دمشق، سوريا</li>
+                                    <li><i class="fas fa-phone"></i> 6801 333 11 963+</li>
+                                    <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                                </ul>
+                                
+                                <h3>تابعنا</h3>
+                                <ul class="icons">
+                                    <li><a href="https://www.facebook.com/SyrSMOT/" class="icon brands fa-facebook-f"><span class="label">فيسبوك</span></a></li>
+                                    <li><a href="https://x.com/SyrSMOT" class="icon brands fa-twitter"><span class="label">تويتر</span></a></li>
+                                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">لينكد إن</span></a></li>
+                                    <li><a href="https://www.youtube.com/@mot-gov" class="icon brands fa-youtube"><span class="label">يوتيوب</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="copyright">
+                            <p>© 2025 وزارة النقل السورية. جميع الحقوق محفوظة. | تصميم الموقع بواسطة حمزة الحلبي لدورة تصميم الويب - جامعة كوجالي</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidebar = document.getElementById('sidebar');
+            var tgl = sidebar ? sidebar.querySelector('.toggle') : null;
+
+            if (!sidebar || !tgl) return;
+
+            tgl.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                sidebar.classList.toggle('inactive');
+            });
+        });
+    </script>
+
+</body>
+</html>

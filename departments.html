@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="images/favicon_32x32.png">
+    <title>Departments - Ministry of Transport</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Department Styles */
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .department-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #1e3a8a;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .department-icon {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1e3a8a;
+        }
+        
+        .department-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .department-card p {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .department-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .department-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #6b7280;
+        }
+        
+        .department-card ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0d9488;
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="is-preload">
+       <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="departments-ar.html">
+            <i class="fas fa-language"></i>
+            <span>العربية</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="Ministry Logo">
+                <h1>Ministry of Transport</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments.html">
+                        <i class="fas fa-building"></i> Departments
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments.html#road"><i class="fas fa-road"></i> Road Transport</a>
+                        <a href="departments.html#rail"><i class="fas fa-train"></i> Rail Transport</a>
+                        <a href="departments.html#maritime"><i class="fas fa-ship"></i> Maritime Transport</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services.html">
+                        <i class="fas fa-cogs"></i> Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services.html#licenses"><i class="fas fa-id-card"></i> Driving Licenses</a>
+                        <a href="services.html#registration"><i class="fas fa-car"></i> Vehicle Registration</a>
+                        <a href="services.html#permits"><i class="fas fa-file-alt"></i> Transport Permits</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="Admin Login">
+                         <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index-ar.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> العربية
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo">
+                        <span class="symbol"><img src="images/logo.png" alt="Ministry Logo" style="width: 40px; height: 40px;" /></span>
+                        <strong>Ministry of Transport</strong>
+                    </a>
+                    <ul class="icons">
+                        <li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>Our Departments</h1>
+                        <p class="subtitle">The Ministry of Transport is structured into several key departments, each playing a vital role in managing and developing Syria's transportation sector.</p>
+                    </header>
+
+                    <div class="departments-grid">
+                        <!-- Department 1 -->
+                        <div class="department-card" id="road">
+                            <div class="department-icon">
+                                <i class="fas fa-road fa-3x"></i>
+                            </div>
+                            <h3>Department of Road Transport</h3>
+                            <p>Responsible for the planning, development, and maintenance of the national road network, including highways, urban roads, and rural access roads. It also oversees road safety initiatives and traffic management.</p>
+                            <ul>
+                                <li>Road network planning & construction</li>
+                                <li>Maintenance & rehabilitation</li>
+                                <li>Traffic management & safety</li>
+                            </ul>
+                        </div>
+
+                        <!-- Department 2 -->
+                        <div class="department-card" id="rail">
+                            <div class="department-icon">
+                                <i class="fas fa-train fa-3x"></i>
+                            </div>
+                            <h3>Department of Rail Transport</h3>
+                            <p>Manages the development, operation, and regulation of the railway system. This includes passenger and freight services, railway infrastructure, and ensuring adherence to national and international rail standards.</p>
+                            <ul>
+                                <li>Railway infrastructure development</li>
+                                <li>Passenger & freight services</li>
+                                <li>Safety & regulation</li>
+                            </ul>
+                        </div>
+
+                        <!-- Department 3 -->
+                        <div class="department-card" id="maritime">
+                            <div class="department-icon">
+                                <i class="fas fa-ship fa-3x"></i>
+                            </div>
+                            <h3>Department of Maritime Transport</h3>
+                            <p>Oversees the country's ports, shipping lanes, and maritime activities. Its functions include port management, navigation safety, maritime security, and the regulation of shipping companies.</p>
+                            <ul>
+                                <li>Port operations & management</li>
+                                <li>Shipping regulation & safety</li>
+                                <li>Maritime security</li>
+                            </ul>
+                        </div>
+
+                        <!-- Department 4 -->
+                        <div class="department-card">
+                            <div class="department-icon">
+                                <i class="fas fa-plane fa-3x"></i>
+                            </div>
+                            <h3>Department of Air Transport</h3>
+                            <p>Regulates civil aviation, manages airports, and ensures compliance with international air safety standards. It also facilitates air traffic control and the development of air transport policies.</p>
+                            <ul>
+                                <li>Civil aviation regulation</li>
+                                <li>Airport management</li>
+                                <li>Air traffic control</li>
+                            </ul>
+                        </div>
+
+                        <!-- Department 5 -->
+                        <div class="department-card">
+                            <div class="department-icon">
+                                <i class="fas fa-wrench fa-3x"></i>
+                            </div>
+                            <h3>Department of Planning & Studies</h3>
+                            <p>Conducts research, develops strategic plans, and provides statistical analysis for the entire transportation sector. It plays a crucial role in forecasting future needs and guiding policy decisions.</p>
+                            <ul>
+                                <li>Strategic planning</li>
+                                <li>Feasibility studies</li>
+                                <li>Statistical analysis</li>
+                            </ul>
+                        </div>
+
+                        <!-- Department 6 -->
+                        <div class="department-card">
+                            <div class="department-icon">
+                                <i class="fas fa-balance-scale fa-3x"></i>
+                            </div>
+                            <h3>Department of Legal Affairs</h3>
+                            <p>Provides legal counsel to the Ministry, drafts legislation, and ensures compliance with national and international laws related to transportation. It also handles legal disputes and regulatory enforcement.</p>
+                            <ul>
+                                <li>Legal counsel & legislation</li>
+                                <li>Regulatory enforcement</li>
+                                <li>Dispute resolution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="major" />
+
+                    <div class="cta-section">
+                        <h2>Have a question for a specific department?</h2>
+                        <p>Our dedicated teams are ready to assist you. Please visit our contact page to find the appropriate contact details.</p>
+                        <ul class="actions">
+                            <li><a href="contact.html" class="button large primary">Contact a Department</a></li>
+                            <li><a href="services.html" class="button large">View Our Services</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+                    <!-- MAIN WEBSITE FOOTER -->
+        <footer id="main-footer">
+            <div class="inner">
+                <div class="footer-columns">
+                    <!-- Column 1: About -->
+                    <div class="footer-column">
+                        <h3>Ministry of Transport</h3>
+                        <p>Syrian Arab Republic</p>
+                        <p>Building the future of transportation through innovation, safety, and sustainability. We are committed to serving all citizens with efficient and modern transportation solutions.</p>
+                    </div>
+                    
+                    <!-- Column 2: Quick Links -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="mission.html">Mission & Vision</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="departments.html">Departments</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Column 3: Services -->
+                    <div class="footer-column">
+                        <h3>Our Services</h3>
+                        <ul>
+                            <li><a href="services.html#licenses">Driving Licenses</a></li>
+                            <li><a href="services.html#registration">Vehicle Registration</a></li>
+                            <li><a href="services.html#permits">Transport Permits</a></li>
+                            <li><a href="services.html">Road Safety Programs</a></li>
+                            <li><a href="services.html">Vehicle Inspection</a></li>
+                            <li><a href="services.html">Public Transport</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Column 4: Contact -->
+                    <div class="footer-column">
+                        <h3>Contact Information</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+                            <li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+                            <li><i class="fas fa-fax"></i>  +963 11 332 3317</li>
+                            <li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+                        </ul>
+                        
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by Hamza Al Halabi for Kocaeli University Web Design Course</p>
+                </div>
+            </div>
+        </footer>
+        <!-- END OF MAIN FOOTER -->
+
+        </div>
+
+
+        <!-- END OF #main -->
+
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Mission & Vision</a></li>
+                        <li>
+                            <span class="opener">Departments</span>
+                            <ul>
+                                <li><a href="departments.html#road">Road Transport</a></li>
+                                <li><a href="departments.html#rail">Rail Transport</a></li>
+                                <li><a href="departments.html#maritime">Maritime Transport</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Services</span>
+                            <ul>
+                                <li><a href="services.html#licenses">Driving Licenses</a></li>
+                                <li><a href="services.html#registration">Vehicle Registration</a></li>
+                                <li><a href="services.html#permits">Transport Permits</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="statistics.html">Statistics</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Info -->
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <p>We welcome your questions, suggestions, and feedback.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+                        <li class="icon solid fa-phone">+963 11 333 6801</li>
+                        <li class="icon solid fa-home">Damascus, Syria</li>
+                    </ul>
+                </section>
+
+                <!-- Sidebar Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy; 2025 Syrian Ministry of Transport. All rights reserved.</p>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- END OF WRAPPER -->
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+<button class="scroll-to-top" id="scrollToTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>

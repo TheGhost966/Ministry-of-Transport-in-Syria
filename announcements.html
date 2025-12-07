@@ -1,0 +1,664 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="icon" type="image/png" href="images/favicon_32x32.png">
+	<title>Announcements - Ministry of Transport</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/custom.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+	<style>
+		/* Announcements Page Specific Styles */
+		.subtitle {
+			font-size: 1.2rem;
+			color: #6b7280;
+			margin-bottom: 2rem;
+		}
+
+		/* Announcement Grid */
+		.announcements-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		/* Announcement Card */
+		.announcement-card {
+			background: white;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			cursor: pointer;
+			border-top: 4px solid #1e3a8a;
+		}
+
+		.announcement-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+		}
+
+		.announcement-image {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.announcement-content {
+			padding: 1.5rem;
+		}
+
+		.announcement-content h3 {
+			color: #1e3a8a;
+			margin-bottom: 0.75rem;
+			font-size: 1.2rem;
+			line-height: 1.3;
+		}
+
+		.announcement-excerpt {
+			color: #4b5563;
+			line-height: 1.6;
+			margin-bottom: 1rem;
+			font-size: 0.95rem;
+		}
+
+		.announcement-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-top: 1rem;
+			border-top: 1px solid #e5e7eb;
+			font-size: 0.85rem;
+			color: #6b7280;
+		}
+
+		.announcement-date {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.announcement-category {
+			background: #e0f2fe;
+			color: #0369a1;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+
+		/* Category color variations */
+		.category-services { background: #dbeafe; color: #1e40af; }
+		.category-regulations { background: #fef3c7; color: #92400e; }
+		.category-aviation { background: #e0e7ff; color: #3730a3; }
+		.category-maritime { background: #cffafe; color: #155e75; }
+		.category-safety { background: #fee2e2; color: #991b1b; }
+		.category-infrastructure { background: #f3e8ff; color: #6b21a8; }
+		.category-events { background: #dcfce7; color: #166534; }
+		.category-news { background: #e0f2fe; color: #0369a1; }
+
+		/* Pagination */
+		.pagination {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			margin-top: 3rem;
+			list-style: none;
+			padding: 0;
+		}
+
+		.pagination a {
+			padding: 0.5rem 1rem;
+			border: 1px solid #d1d5db;
+			border-radius: 5px;
+			color: #1e3a8a;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		.pagination a:hover,
+		.pagination a.active {
+			background: #1e3a8a;
+			color: white;
+			border-color: #1e3a8a;
+		}
+
+		.pagination .extra {
+			color: #6b7280;
+		}
+
+		/* Modal Enhancement */
+		.modal-meta {
+			color: #6b7280;
+			margin-bottom: 1.5rem;
+			font-size: 0.9rem;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.announcements-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.announcement-meta {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.5rem;
+			}
+		}
+	</style>
+</head>
+<body class="is-preload">
+	   <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="announcements-ar.html">
+            <i class="fas fa-language"></i>
+            <span>العربية</span>
+        </a>
+    </div>
+        <!-- Top Header (Scrolls Away) -->
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="header-logo-section">
+                <img src="images/logo.png" alt="Ministry Logo">
+                <h1>Ministry of Transport</h1>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/SyrSMOT" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+ <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu -->
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                
+                <!-- Departments Dropdown -->
+                <li class="dropdown">
+                    <a href="departments.html">
+                        <i class="fas fa-building"></i> Departments
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="departments.html#road"><i class="fas fa-road"></i> Road Transport</a>
+                        <a href="departments.html#rail"><i class="fas fa-train"></i> Rail Transport</a>
+                        <a href="departments.html#maritime"><i class="fas fa-ship"></i> Maritime Transport</a>
+                    </div>
+                </li>
+                
+                <!-- Services Dropdown -->
+                <li class="dropdown">
+                    <a href="services.html">
+                        <i class="fas fa-cogs"></i> Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services.html#licenses"><i class="fas fa-id-card"></i> Driving Licenses</a>
+                        <a href="services.html#registration"><i class="fas fa-car"></i> Vehicle Registration</a>
+                        <a href="services.html#permits"><i class="fas fa-file-alt"></i> Transport Permits</a>
+                    </div>
+                </li>
+                
+                <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <a href="app/AdminLTE-4.0.0-rc4/dist/examples/login-v2.html" class="admin-login" title="Admin Login">
+                         <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </li>
+                <!-- Language Switcher -->
+                <li>
+                    <a href="index-ar.html" class="lang-switcher">
+                        <i class="fas fa-language"></i> العربية
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="images/logo.png" alt="Ministry Logo" style="width: 20px; height: 20px;" /></span>
+						<strong>Ministry of Transport</strong>
+					</a>
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/SyrSMOT/" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="https://x.com/SyrSMOT" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.youtube.com/@mot-gov" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+					</ul>
+				</header>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Latest Announcements</h1>
+						<p class="subtitle">Stay informed with the latest news, updates, and directives from the Ministry of Transport.</p>
+					</header>
+
+					<!-- Announcements Grid -->
+					<div class="announcements-grid">
+						
+						<!-- Announcement 1 -->
+						<div class="announcement-card" onclick="openModal('modal1')">
+							<img src="images/pic01.jpg" alt="Highway Project" class="announcement-image">
+							<div class="announcement-content">
+								<h3>New Highway Project Launched</h3>
+								<p class="announcement-excerpt">The Ministry of Transport has officially launched a new major highway project aimed at connecting key cities and improving national infrastructure...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										October 1, 2025
+									</span>
+									<span class="announcement-category category-news">General News</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 2 -->
+						<div class="announcement-card" onclick="openModal('modal2')">
+							<img src="images/pic02.jpg" alt="Public Transport" class="announcement-image">
+							<div class="announcement-content">
+								<h3>Public Transport Expansion Initiative</h3>
+								<p class="announcement-excerpt">An ambitious initiative to expand public transport networks in major urban centers has been announced. This includes new bus routes, increased frequency...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										September 28, 2025
+									</span>
+									<span class="announcement-category category-services">Services</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 3 -->
+						<div class="announcement-card" onclick="openModal('modal3')">
+							<img src="images/pic03.jpg" alt="Commercial Vehicles" class="announcement-image">
+							<div class="announcement-content">
+								<h3>New Regulations for Commercial Vehicles</h3>
+								<p class="announcement-excerpt">The Ministry has introduced new regulations for commercial vehicles to enhance road safety and ensure compliance with international standards...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										September 20, 2025
+									</span>
+									<span class="announcement-category category-regulations">Regulations</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 4 -->
+						<div class="announcement-card" onclick="openModal('modal4')">
+							<img src="images/pic04.jpg" alt="Aviation Safety" class="announcement-image">
+							<div class="announcement-content">
+								<h3>International Aviation Safety Standards Adopted</h3>
+								<p class="announcement-excerpt">Syria's aviation sector is aligning with the latest international safety standards as part of an ongoing commitment to ensuring secure air travel...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										September 15, 2025
+									</span>
+									<span class="announcement-category category-aviation">Aviation</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 5 -->
+						<div class="announcement-card" onclick="openModal('modal5')">
+							<img src="images/pic05.jpg" alt="Port Modernization" class="announcement-image">
+							<div class="announcement-content">
+								<h3>Port Modernization Project Underway</h3>
+								<p class="announcement-excerpt">Major modernization efforts are in progress at key Syrian ports to improve cargo handling efficiency, increase capacity, and enhance trade logistics...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										September 10, 2025
+									</span>
+									<span class="announcement-category category-maritime">Maritime</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 6 -->
+						<div class="announcement-card" onclick="openModal('modal6')">
+							<img src="images/pic06.jpg" alt="Driving License" class="announcement-image">
+							<div class="announcement-content">
+								<h3>New Driving License System Implemented</h3>
+								<p class="announcement-excerpt">A new, digitized driving license issuance and renewal system has been implemented to streamline processes and reduce wait times...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										September 5, 2025
+									</span>
+									<span class="announcement-category category-services">Services</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 7 -->
+						<div class="announcement-card" onclick="openModal('modal7')">
+							<img src="images/pic07.jpg" alt="Road Safety" class="announcement-image">
+							<div class="announcement-content">
+								<h3>Road Safety Awareness Campaign Launched</h3>
+								<p class="announcement-excerpt">A nationwide road safety awareness campaign has been launched to educate drivers and pedestrians on safe practices, aiming to reduce traffic accidents...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										August 28, 2025
+									</span>
+									<span class="announcement-category category-safety">Safety</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 8 -->
+						<div class="announcement-card" onclick="openModal('modal8')">
+							<img src="images/pic08.jpg" alt="Logistics Hub" class="announcement-image">
+							<div class="announcement-content">
+								<h3>New Logistics Hub Inaugurated</h3>
+								<p class="announcement-excerpt">A state-of-the-art logistics hub has been inaugurated to enhance freight transportation and supply chain efficiency across the region...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										August 20, 2025
+									</span>
+									<span class="announcement-category category-infrastructure">Infrastructure</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Announcement 9 -->
+						<div class="announcement-card" onclick="openModal('modal9')">
+							<img src="images/pic09.jpg" alt="Green Transport" class="announcement-image">
+							<div class="announcement-content">
+								<h3>Call for Proposals: Green Transport Initiatives</h3>
+								<p class="announcement-excerpt">The Ministry is inviting proposals for innovative green transport initiatives to promote sustainable practices and reduce carbon emissions...</p>
+								<div class="announcement-meta">
+									<span class="announcement-date">
+										<i class="far fa-calendar"></i>
+										August 10, 2025
+									</span>
+									<span class="announcement-category category-events">Events</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Pagination -->
+					<ul class="pagination">
+						<li><a href="#" class="active">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><span class="extra">&hellip;</span></li>
+						<li><a href="#">8</a></li>
+						<li><a href="#">Next</a></li>
+					</ul>
+
+				</section>
+
+			</div>
+
+			<!-- Main Footer -->
+			<footer id="main-footer">
+				<div class="inner">
+					<div class="footer-columns">
+						<!-- Column 1: About -->
+						<div class="footer-column">
+							<h3>Ministry of Transport</h3>
+							<p>Syrian Arab Republic</p>
+							<p>Building the future of transportation through innovation, safety, and sustainability. We are committed to serving all citizens with efficient and modern transportation solutions.</p>
+						</div>
+
+						<!-- Column 2: Quick Links -->
+						<div class="footer-column">
+							<h3>Quick Links</h3>
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="mission.html">Mission & Vision</a></li>
+								<li><a href="services.html">Our Services</a></li>
+								<li><a href="departments.html">Departments</a></li>
+								<li><a href="statistics.html">Statistics</a></li>
+							</ul>
+						</div>
+
+						<!-- Column 3: Services -->
+						<div class="footer-column">
+							<h3>Our Services</h3>
+							<ul>
+								<li><a href="services.html#licenses">Driving Licenses</a></li>
+								<li><a href="services.html#registration">Vehicle Registration</a></li>
+								<li><a href="services.html#permits">Transport Permits</a></li>
+								<li><a href="services.html">Road Safety Programs</a></li>
+								<li><a href="services.html">Vehicle Inspection</a></li>
+								<li><a href="services.html">Public Transport</a></li>
+							</ul>
+						</div>
+
+						<!-- Column 4: Contact -->
+						<div class="footer-column">
+							<h3>Contact Information</h3>
+							<ul>
+								<li><i class="fas fa-map-marker-alt"></i> Damascus, Syria</li>
+								<li><i class="fas fa-phone"></i> +963 11 333 6801</li>
+								<li><i class="fas fa-fax"></i> +963 11 332 3317</li>
+								<li><i class="fas fa-envelope"></i> info@mot.gov.sy</li>
+							</ul>
+							<h3>Follow Us</h3>
+							<div class="social-icons">
+								<a href="https://www.facebook.com/SyrSMOT/" target="_blank" title="Facebook">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a href="https://x.com/SyrSMOT" target="_blank" title="Twitter">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a href="https://www.youtube.com/@mot-gov" target="_blank" title="YouTube">
+									<i class="fab fa-youtube"></i>
+								</a>
+								<a href="#" title="LinkedIn">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Footer Bottom -->
+					<div class="footer-bottom">
+						<p>&copy; 2025 Syrian Ministry of Transport. All rights reserved. | Website designed by Hamza Al Halabi for Kocaeli University Web Design Course</p>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+		<!-- End of #main -->
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Search -->
+				<section id="search" class="alt">
+					<form method="post" action="#">
+						<input type="text" name="query" id="query" placeholder="Search" />
+					</form>
+				</section>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="mission.html">Mission & Vision</a></li>
+						<li>
+							<span class="opener">Departments</span>
+							<ul>
+								<li><a href="departments.html#road">Road Transport</a></li>
+								<li><a href="departments.html#rail">Rail Transport</a></li>
+								<li><a href="departments.html#maritime">Maritime Transport</a></li>
+							</ul>
+						</li>
+						<li>
+							<span class="opener">Services</span>
+							<ul>
+								<li><a href="services.html#licenses">Driving Licenses</a></li>
+								<li><a href="services.html#registration">Vehicle Registration</a></li>
+								<li><a href="services.html#permits">Transport Permits</a></li>
+							</ul>
+						</li>
+						<li><a href="statistics.html">Statistics</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Contact Info -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<p>We welcome your questions, suggestions, and feedback.</p>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="#">info@mot.gov.sy</a></li>
+						<li class="icon solid fa-phone">+963 11 333 6801</li>
+						<li class="icon solid fa-home">Damascus, Syria</li>
+					</ul>
+				</section>
+
+				<!-- Sidebar Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; 2025 Syrian Ministry of Transport. All rights reserved.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- End of wrapper -->
+
+	<!-- Modal Elements (9 modals for 9 announcements) -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal1')">&times;</span>
+			<h2>New Highway Project Launched</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> October 1, 2025 | <strong>General News</strong></p>
+			<p>The Ministry of Transport has officially launched a new major highway project aimed at connecting key cities and improving national infrastructure. This project is expected to significantly boost economic activity and facilitate easier travel across the country.</p>
+			<p>The highway will span over 300 kilometers, connecting Damascus with major economic centers. Construction is expected to be completed within 3 years, creating thousands of jobs and improving logistics efficiency across the region.</p>
+			<p><strong>Key Features:</strong> Four-lane design, modern toll systems, rest areas every 50km, and integration with existing road networks.</p>
+		</div>
+	</div>
+
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal2')">&times;</span>
+			<h2>Public Transport Expansion Initiative</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> September 28, 2025 | <strong>Services</strong></p>
+			<p>An ambitious initiative to expand public transport networks in major urban centers has been announced. This includes new bus routes, increased frequency, and modernizing existing fleets to provide better service to commuters.</p>
+			<p>The expansion will add 50 new buses to the fleet, introduce 15 new routes, and implement a digital ticketing system. The initiative aims to reduce traffic congestion and provide affordable transportation options to all citizens.</p>
+		</div>
+	</div>
+
+	<div id="modal3" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal3')">&times;</span>
+			<h2>New Regulations for Commercial Vehicles</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> September 20, 2025 | <strong>Regulations</strong></p>
+			<p>The Ministry has introduced new regulations for commercial vehicles to enhance road safety and ensure compliance with international standards. These regulations cover vehicle maintenance, driver training, and cargo security.</p>
+			<p>All commercial vehicle operators must comply with the new standards by January 2026. The regulations include mandatory safety inspections every 6 months, driver certification programs, and updated cargo securing requirements.</p>
+		</div>
+	</div>
+
+	<div id="modal4" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal4')">&times;</span>
+			<h2>International Aviation Safety Standards Adopted</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> September 15, 2025 | <strong>Aviation</strong></p>
+			<p>Syria's aviation sector is aligning with the latest international safety standards as part of an ongoing commitment to ensuring secure and efficient air travel. This move will enhance global connectivity and passenger confidence.</p>
+			<p>The adoption of ICAO standards demonstrates Syria's commitment to aviation safety and will facilitate better integration with international air traffic systems.</p>
+		</div>
+	</div>
+
+	<div id="modal5" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal5')">&times;</span>
+			<h2>Port Modernization Project Underway</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> September 10, 2025 | <strong>Maritime</strong></p>
+			<p>Major modernization efforts are in progress at key Syrian ports to improve cargo handling efficiency, increase capacity, and enhance trade logistics. This project is vital for regional and international commerce.</p>
+			<p>The modernization includes new container handling equipment, expanded storage facilities, and digital port management systems. The project will increase port capacity by 40% and reduce ship turnaround time by 30%.</p>
+		</div>
+	</div>
+
+	<div id="modal6" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal6')">&times;</span>
+			<h2>New Driving License System Implemented</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> September 5, 2025 | <strong>Services</strong></p>
+			<p>A new, digitized driving license issuance and renewal system has been implemented to streamline processes and reduce wait times. Citizens can now apply and track their applications online.</p>
+			<p>The digital system includes online appointment booking, document upload capabilities, and real-time application tracking. Processing times have been reduced from 2 weeks to 3-5 business days.</p>
+		</div>
+	</div>
+
+	<div id="modal7" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal7')">&times;</span>
+			<h2>Road Safety Awareness Campaign Launched</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> August 28, 2025 | <strong>Safety</strong></p>
+			<p>A nationwide road safety awareness campaign has been launched to educate drivers and pedestrians on safe practices, aiming to reduce traffic accidents and promote responsible road use.</p>
+			<p>The campaign includes television advertisements, school programs, and community workshops. Statistics show that proper road safety education can reduce accidents by up to 25%.</p>
+		</div>
+	</div>
+
+	<div id="modal8" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal8')">&times;</span>
+			<h2>New Logistics Hub Inaugurated</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> August 20, 2025 | <strong>Infrastructure</strong></p>
+			<p>A state-of-the-art logistics hub has been inaugurated to enhance freight transportation and supply chain efficiency across the region. This facility will serve as a central point for distribution and storage.</p>
+			<p>The 50,000 square meter facility includes temperature-controlled storage, modern loading docks, and direct highway access. It will handle up to 1,000 trucks daily and create 500 new jobs.</p>
+		</div>
+	</div>
+
+	<div id="modal9" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal('modal9')">&times;</span>
+			<h2>Call for Proposals: Green Transport Initiatives</h2>
+			<p class="modal-meta"><i class="far fa-calendar"></i> August 10, 2025 | <strong>Events</strong></p>
+			<p>The Ministry is inviting proposals for innovative green transport initiatives to promote sustainable practices and reduce carbon emissions in the transportation sector. Funding opportunities are available.</p>
+			<p>Proposals are being accepted for projects involving electric vehicles, alternative fuels, public transport improvements, and cycling infrastructure. Funding grants range from $50,000 to $500,000. Deadline for submissions is November 30, 2025.</p>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/custom.js"></script>
+<button class="scroll-to-top" id="scrollToTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+</body>
+</html>
