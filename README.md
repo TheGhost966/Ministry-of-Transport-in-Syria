@@ -47,7 +47,7 @@ This project represents a complete redesign of the Syrian Ministry of Transport 
 
 ### Live Demo
 
-🔗 **[View Live Website](https://your-netlify-url.netlify.app)**
+🔗 **(https://exquisite-belekoy-b51374.netlify.app/)**
 
 ---
 
@@ -694,7 +694,7 @@ CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
 CONDITIONS.
 ```
 
-See [LICENSE](LICENSE) file for complete license details.
+See [LICENSE](LICENSE.txt) file for complete license details.
 
 ---
 
