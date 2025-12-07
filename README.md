@@ -694,7 +694,7 @@ CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
 CONDITIONS.
 ```
 
-See [LICENSE](LICENSE) file for complete license details.
+See [LICENSE](LICENSE.txt) file for complete license details.
 
 ---
 
